@@ -1,6 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NavbarWrapper from "./components/NavbarWrapper";
+import { Toaster } from "@/components/ui/sonner";
 
+// Define Poppins as the main font
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
+
+// Define Geist Sans & Geist Mono as variable fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -20,9 +30,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
+        <NavbarWrapper/>
         {children}
+        <Toaster />
       </body>
     </html>
   );
