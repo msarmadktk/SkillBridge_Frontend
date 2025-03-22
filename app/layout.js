@@ -1,8 +1,7 @@
 import { Poppins, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavbarWrapper from "./components/NavbarWrapper";
-import { Toaster } from "@/components/ui/sonner";
-
+import ClerkProviderWrapper from "./components/ClerkProviderWrapper";
 // Define Poppins as the main font
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,13 +28,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
-      >
-        <NavbarWrapper/>
-        {children}
-        <Toaster />
+      <body className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        <ClerkProviderWrapper >
+          <NavbarWrapper />
+          {children}
+        </ClerkProviderWrapper>
       </body>
     </html>
   );
 }
+
